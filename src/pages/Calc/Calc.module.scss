@@ -1,0 +1,60 @@
+.wrapper {
+	min-width: 500px;
+}
+
+.content {
+	display: flex;
+	align-items: center;
+	padding: 0 30px;
+	font-size: 30px;
+	font-weight: bold;
+	width: 100%;
+	min-width: 150px;
+	height: 50px;
+	border: 1px solid black;
+}
+
+.buttonBlock {
+	gap: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 250px;
+	margin: 0 auto;
+}
+
+.numbersBlock {
+	margin-top: 10px;
+	div {
+		display: flex;
+
+		justify-content: center;
+	}
+}
+.deleteBlock {
+	display: flex;
+	gap: 30px;
+	button {
+		width: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: red;
+		&:hover {
+			background-color: rgb(173, 0, 0);
+		}
+	}
+}
+
+button {
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.getAnswerButton {
+	background-color: greenyellow;
+	width: 100%;
+}
