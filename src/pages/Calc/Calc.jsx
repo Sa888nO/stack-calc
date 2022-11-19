@@ -74,18 +74,11 @@ const Calc = () => {
 					<Button content={"Delete"} onClick={deleteEl} />
 					<Button content={"Clear"} onClick={deleteAllEl} />
 				</div>
-				<button
+				<Button
+					content={"="}
+					onClick={() => Calculate(expression)}
 					className={styles.getAnswerButton}
-					onClick={() => {
-						updateAnswer(
-							calcInPolishNotation(
-								ParseExpToPolishNotation(expression.split(" "))
-							)
-						);
-					}}
-				>
-					=
-				</button>
+				/>
 			</div>
 		</div>
 	);
