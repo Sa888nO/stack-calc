@@ -1,15 +1,24 @@
 .wrapper {
 	min-width: 500px;
 }
-
-.content {
+.contentBlock {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	p {
+		flex: none;
+		color: green;
+	}
+}
+.expression {
 	display: flex;
 	align-items: center;
 	padding: 0 30px;
-	font-size: 30px;
 	font-weight: bold;
-	width: 100%;
-	min-width: 150px;
+	width: 70%;
+	min-width: 250px;
 	height: 50px;
 	border: 1px solid black;
 }

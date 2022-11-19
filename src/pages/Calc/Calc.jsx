@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Button from "@components/Button";
+import { calcInPolishNotation } from "@utils/CalculatePolishNotation";
+import { ParseExpToPolishNotation } from "@utils/ParseExpToPolishNotation";
 import styles from "./Calc.module.scss";
 
 const Calc = () => {
 	const [expression, updateExpression] = useState("");
+	const [answer, updateAnswer] = useState(" ");
 
 	const addElToExp = (element) => {
 		updateExpression(expression + element);
@@ -11,15 +14,28 @@ const Calc = () => {
 
 	const deleteEl = () => {
 		updateExpression(expression.slice(0, -1));
+		updateAnswer("");
 	};
+
 	const deleteAllEl = () => {
 		updateExpression("");
+		updateAnswer("");
+	};
+
+	const Calculate = (expression) => {
+		updateAnswer(
+			calcInPolishNotation(
+				ParseExpToPolishNotation(expression.split(" "))
+			)
+		);
 	};
 
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles.content}>{expression}</div>
-			<div className={styles.answer}></div>
+			<div className={styles.contentBlock}>
+				<div className={styles.expression}>{expression}</div>
+				<p>= {answer}</p>
+			</div>
 			<div className={styles.buttonBlock}>
 				<div className={styles.numbersBlock}>
 					<div>
@@ -39,24 +55,37 @@ const Calc = () => {
 					</div>
 					<div>
 						<Button content={0} onClick={() => addElToExp("0")} />
+						<Button content={"."} onClick={() => addElToExp(".")} />
+						<Button content={" "} onClick={() => addElToExp(" ")} />
 					</div>
 				</div>
 				<div>
-					<Button content={"+"} onClick={() => addElToExp("+")} />
+					<Button content={"+"} onClick={() => addElToExp(" + ")} />
 					<Button content={"-"} onClick={() => addElToExp("-")} />
-					<Button content={"*"} onClick={() => addElToExp("*")} />
-					<Button content={"/"} onClick={() => addElToExp("/")} />
-					<Button content={"^"} onClick={() => addElToExp("^")} />
+					<Button content={"*"} onClick={() => addElToExp(" * ")} />
+					<Button content={"/"} onClick={() => addElToExp(" / ")} />
+					<Button content={"^"} onClick={() => addElToExp(" ^ ")} />
 				</div>
 				<div>
-					<Button content={"("} onClick={() => addElToExp("(")} />
-					<Button content={")"} onClick={() => addElToExp(")")} />
+					<Button content={"("} onClick={() => addElToExp(" ( ")} />
+					<Button content={")"} onClick={() => addElToExp(" ) ")} />
 				</div>
 				<div className={styles.deleteBlock}>
 					<Button content={"Delete"} onClick={deleteEl} />
 					<Button content={"Clear"} onClick={deleteAllEl} />
 				</div>
-				<button className={styles.getAnswerButton}>=</button>
+				<button
+					className={styles.getAnswerButton}
+					onClick={() => {
+						updateAnswer(
+							calcInPolishNotation(
+								ParseExpToPolishNotation(expression.split(" "))
+							)
+						);
+					}}
+				>
+					=
+				</button>
 			</div>
 		</div>
 	);
