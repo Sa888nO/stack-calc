@@ -10,18 +10,20 @@ export const calcInPolishNotation = (array) => {
 		if (!isNaN(array[i]) && isFinite(array[i])) {
 			stack.push(array[i]);
 		} else {
-			let a = stack.pop();
-			let b = stack.pop();
+			let a = +stack.pop();
+			let b = +stack.pop();
+			// eslint-disable-next-line no-console
+			console.log(a, b);
 			if (array[i] === "+") {
-				stack.push(parseInt(a) + parseInt(b));
+				stack.push(a + b);
 			} else if (array[i] === "-") {
-				stack.push(parseInt(b) - parseInt(a));
+				stack.push(b - a);
 			} else if (array[i] === "*") {
-				stack.push(parseInt(a) * parseInt(b));
+				stack.push(a * b);
 			} else if (array[i] === "/") {
-				stack.push(parseInt(b) / parseInt(a));
+				stack.push(b / a);
 			} else if (array[i] === "^") {
-				stack.push(Math.pow(parseInt(b), parseInt(a)));
+				stack.push(Math.pow(b, a));
 			}
 		}
 	}

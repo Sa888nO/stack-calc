@@ -56,12 +56,12 @@ const Calc = () => {
 					<div>
 						<Button content={0} onClick={() => addElToExp("0")} />
 						<Button content={"."} onClick={() => addElToExp(".")} />
-						<Button content={" "} onClick={() => addElToExp(" ")} />
+						<Button content={"-"} onClick={() => addElToExp("-")} />
 					</div>
 				</div>
 				<div>
 					<Button content={"+"} onClick={() => addElToExp(" + ")} />
-					<Button content={"-"} onClick={() => addElToExp("-")} />
+					<Button content={"-"} onClick={() => addElToExp(" - ")} />
 					<Button content={"*"} onClick={() => addElToExp(" * ")} />
 					<Button content={"/"} onClick={() => addElToExp(" / ")} />
 					<Button content={"^"} onClick={() => addElToExp(" ^ ")} />
